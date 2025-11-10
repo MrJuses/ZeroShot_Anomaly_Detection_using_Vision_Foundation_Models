@@ -1,0 +1,25 @@
+Zero shot betyder at vi kun sammenligner de feature extractions vi får ud fra vores foundation models (DINOsaur osv.).
+
+Few shot vil sige at vi muligvis fitter en lille model, eller fine tuner parameter vægte. Eller fitter en gaussian. 
+
+Hvad vi skal gører, basically.
+
+Få features fra foundation model, for en given katagori (helst beregnet i patches) (DINOV3 kan enten give én token for et helt billede, 
+eller give patch embeddings/features, i et grid).
+
+Sammenlign på én af følgende måder anomalous billeder (test) fra en katagorierne med de fra de normale.
+
+1. Metode: beregn mean og std af hver patch for the normale (train) billeder i en given katagori, 
+derefter beregn én eller anden form for similiaritet mellem mean, std patch grid for normal, og patch grid for anomalous.
+
+2. Metode: Beregn én eller anden form for similaritet (cosine, L1, L2) mellem ét anomalous billede patch grid i en given katagori, 
+og hvert normale billede fra den katagori. Beregn derefter et eller andet summary (f.eks. mean) mål, som siger noget om hvor mange weird patches 
+vi har mødt igennem rejsen.
+
+
+Efter vi har gjort dette skal vi også genre kunne sige at det også virker for normale billeder, så tag normale billeder 
+fra en given katagori og behandel dem på samme måde. Derefter bør vi gerne kunne sige at normale billeder fra test, giver "normale" resultater, 
+og anomalous gør ej.
+
+
+Hvis vi gør alt det, burde projektet være færdigt tror jeg. Hele udfordringen er at får foundation models til at virke.
