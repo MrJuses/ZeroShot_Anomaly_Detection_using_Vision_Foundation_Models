@@ -33,3 +33,11 @@ https://github.com/Kaisor-Yuan/AD-DINOv3
 
 dataset:
 https://www.mvtec.com/company/research/datasets/mvtec-ad/downloads
+
+
+Prerequisits to run the code:
+ - open terminal in the base folder "zeroshot_anomaly..."
+ - "pip install git+https://github.com/facebookresearch/segment-anything.git"
+ - run "wget https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth"
+ - "pip install opencv-python pycocotools matplotlib onnxruntime onnx"
+ 
